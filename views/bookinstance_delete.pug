@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Delete Book Instance: #{bookinstance.book.title}
+  
+  if all_books_instance.length
+    p #[strong Note: There are other instances of this book. Deleting this instance will not remove the book itself from the catalog.]
+
+    div(style='margin-left:20px;margin-top:20px')
+      h4 Instances
+      dl
+      each instance in all_books_instance
+        dt
+          a(href=instance.url) #{instance.status} - #{instance.due_back}
+        dd Location: #{instance.imprint}
+
+  else
+    p Are you sure you want to delete this specific book instance?
+
+  form(method='POST' action='')
+    div.form-group
+      input#bookinstanceid.form-control(type='hidden',name='bookinstanceid', required='true', value=bookinstance._id )
+
+    button.btn.btn-primary(type='submit') Delete
