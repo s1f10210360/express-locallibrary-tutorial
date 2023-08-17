@@ -14,7 +14,7 @@ var app = express();
 var mongoose = require("mongoose");
 var dev_db_url =
   "mongodb+srv://mayu0hira:mongodb@cluster0.ex87cjs.mongodb.net/?retryWrites=true&w=majority";
-const mongoDB = process.envMONGODB_URI || dev_db_url;
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 const compression = require("compression");
 const helmet = require("helmet");
 const RateLimit = require("express-rate-limit");
